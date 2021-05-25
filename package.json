@@ -4,8 +4,11 @@
   "description": "MVC OO React",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "daimond": "node index.js",
+    "controller": "node ./tasks/generators/Controller.js"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hoverinc/diamondhands.git"
@@ -20,5 +23,13 @@
   "bugs": {
     "url": "https://github.com/hoverinc/diamondhands/issues"
   },
-  "homepage": "https://github.com/hoverinc/diamondhands#readme"
+  "homepage": "https://github.com/hoverinc/diamondhands#readme",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "clear": "^0.1.0",
+    "clui": "^0.3.6",
+    "figlet": "^1.5.0",
+    "filepath": "^1.1.0",
+    "inquirer": "^8.1.0"
+  }
 }
