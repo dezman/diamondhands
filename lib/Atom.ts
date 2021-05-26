@@ -1,5 +1,5 @@
 import React from "react";
-import store from "lib/diamondhands/store";
+import store from "../lib/store";
 import Proton from "./Proton";
 
 class Atom extends Proton {
@@ -9,7 +9,7 @@ class Atom extends Proton {
     if (props.molecule) return;
 
     if ( Object.keys(this.state).length !== 1 ) {
-      error("↳ ⚛ Atoms can only have once piece of state. ⚛");
+      console.error("↳ ⚛ Atoms can only have once piece of state. ⚛");
       console.log("dev", this);
     }
   }

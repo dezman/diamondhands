@@ -1,5 +1,5 @@
 import React from "react";
-import store from "lib/diamondhands/store";
+import store from "../lib/store";
 
 // Store <-> client state
 class Muon extends React.Component {

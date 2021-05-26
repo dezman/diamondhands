@@ -3,6 +3,7 @@
 import resolver from "./resolver"
 
 class Model {
+
   constructor(id) {
     this.id = id;
     this.data = {};

@@ -1,13 +1,22 @@
 const chalk = require('chalk');
-const clear = require('clear');
 const figlet = require('figlet');
+const package = require('./package.json');
+ 
+module.exports.init = () => {
+  console.log(
+    chalk.green(
+      figlet.textSync('Diamondhands', { horizontalLayout: 'full' })
+    )
+  );
 
+  return '';
+}
 
+module.exports.version = () => {
+  console.log(
+    chalk.green("version number: " + package.version)
+  );
+  return '';
+}
 
-clear();
-
-console.log(
-  chalk.green(
-    figlet.textSync('Diamond Hands', { horizontalLayout: 'full' })
-  )
-);
+module.exports.

@@ -3,6 +3,7 @@ import Proton from "./Proton";
 import store from "./store";
 
 let value = null;
+
 class Resolver extends Proton {
   value() {
     const Value = this.props.Value;
@@ -27,7 +28,7 @@ class Resolver extends Proton {
   }
 }
 
-const resolver = ({endpoint, model, attr, Value, Edit}) => {
+export const resolver = ({endpoint, model, attr, Value, Edit}) => {
   return new Resolver({
     model: model,
     attr: attr,
@@ -36,4 +37,4 @@ const resolver = ({endpoint, model, attr, Value, Edit}) => {
   });
 }
 
-export default resolver
+export default Resolver

@@ -10,7 +10,7 @@ class Store {
     this.state = initialState;
 
     console.log("debug", "🗺 Store ctx:", this);
-    window.bug = this.debug;
+    console.debug = this.debug;
   }
 
   public set(newState) {
@@ -36,7 +36,7 @@ class Store {
     console.log("debug", "💅 Store#get:", passKey);
     
     if (!passKey || passKey === "") {
-      error("🙈 Invalid store request: ", arguments);
+      console.error("🙈 Invalid store request: ", arguments);
     }
 
     return this.cacheKey(passKey);
@@ -47,7 +47,7 @@ class Store {
     if (this.requestTracker[attr]) return this.requestTracker[attr];
 
     if (!attr || !model) {
-      error("🙈 Invalid store request: ", attr, model);
+      console.error("🙈 Invalid store request: ", attr, model);
     }
 
     model.controller.onFinishedFetching( (res) => {

@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import Controller from './Controller';
-import ApolloClients from './ApolloClients';
+// import ApolloClients from './ApolloClients';
 import store from './store';
 
 let diamondhandsClients = {};
@@ -44,7 +44,7 @@ class ApolloController extends Controller {
     if (e.message.match("authentication")) {
       alert("🪵 Please log in to your server.");
     }
-    error("⛔️ Error:", e);
+    console.error("⛔️ Error:", e);
     reject(e);
   }
 
