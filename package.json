@@ -4,9 +4,15 @@
   "description": "MVC OO React",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "daimond": "node index.js",
-    "controller": "node ./tasks/generators/Controller.js"
+    "test": "jest",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -32,5 +38,14 @@
     "filepath": "^1.1.0",
     "inquirer": "^8.1.0",
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "jest": "^27.0.1",
+    "prettier": "^2.3.0",
+    "ts-jest": "^27.0.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.3.2"
   }
 }
