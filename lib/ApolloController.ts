@@ -3,9 +3,13 @@ import Controller from './Controller';
 // import ApolloClients from './ApolloClients';
 import store from './store';
 
-let diamondhandsClients = {};
+let diamondhandsClients: any = { id: 0, name: "Acme" } || {} ;
+let objDefaultValue = {};
+let clientDefault = 0;
+let actionDefault = new String;
+let variablesDefault = new String;
 
-const setDiamondhandsClients = (obj) => {
+const setDiamondhandsClients = (obj = objDefaultValue) => {
   diamondhandsClients = obj
 }
 
@@ -21,7 +25,7 @@ class ApolloController extends Controller {
     returnPartialData: false,
   };
 
-  public gqlAttribute = ({ client, action, variables }) => {
+  public gqlAttribute = ({ client = clientDefault, action = actionDefault, variables = variablesDefault }) => {
     if ( !this.controllerActionValid(action) ) return;
     console.log("dev", "🎛 Controller#gqlAttribute", `🪡 ${action}`);
 
@@ -29,9 +33,10 @@ class ApolloController extends Controller {
 
     const promise = new Promise((resolve, reject) => {
       // GraphQL fetch
+      let clientValues = 0;
       return diamondhandsClients[client].query(queryOptions)
-        .then( res => this.handleApolloSuccess(res, resolve) )
-        .catch( res => this.handleApolloError(res, reject) );
+        .then( (res: any) => this.handleApolloSuccess(res, resolve) )
+        .catch( (res: any) => this.handleApolloError(res, reject) );
     });
 
 
@@ -40,7 +45,7 @@ class ApolloController extends Controller {
 
   // private
 
-  private handleApolloError = (e, reject) => {
+  private handleApolloError = (e: any, reject: any) => {
     if (e.message.match("authentication")) {
       alert("🪵 Please log in to your server.");
     }
@@ -48,16 +53,16 @@ class ApolloController extends Controller {
     reject(e);
   }
 
-  private handleApolloSuccess = (res, resolve) => {
+  private handleApolloSuccess = (res: any, resolve: any) => {
     console.log("dev", "✅ Success:", res);
     resolve(res.data);
 
-    this._finishStack.forEach( (f) => {
+    this._finishStack.forEach( (f: any) => {
       f(res.data);
     });
   }
 
-  private queryOptions(action, variables) {
+  private queryOptions(action = actionDefault, variables = variablesDefault) {
     if (variables) console.log("dev", "🔮 Query variables:", variables);
 
     return {
@@ -69,5 +74,5 @@ class ApolloController extends Controller {
   }
 }
 
-export default ApolloController
-export { setDiamondhandsClients as setDiamondhandsClients }
+export default ApolloController;
+export { setDiamondhandsClients as setDiamondhandsClients };

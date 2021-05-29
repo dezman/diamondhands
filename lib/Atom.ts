@@ -3,7 +3,7 @@ import store from "../lib/store";
 import Proton from "./Proton";
 
 class Atom extends Proton {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
 
     if (props.molecule) return;
