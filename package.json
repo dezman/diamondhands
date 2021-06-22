@@ -4,6 +4,7 @@
   "description": "MVC OO React",
   "main": "index.js",
   "scripts": {
+    "diamondhand": "echo \" DiamondHands \"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,11 @@
   "bugs": {
     "url": "https://github.com/hoverinc/diamondhands/issues"
   },
-  "homepage": "https://github.com/hoverinc/diamondhands#readme"
+  "homepage": "https://github.com/hoverinc/diamondhands#readme",
+  "dependencies": {
+    "@apollo/client": "^3.3.20",
+    "isomorphic-fetch": "^3.0.0",
+    "jquery": "^3.6.0",
+    "react": "^17.0.2"
+  }
 }

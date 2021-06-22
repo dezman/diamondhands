@@ -1,7 +1,5 @@
 import fetch from "isomorphic-fetch";
-import Router from "app/Router";
 import store from "./store";
-import _ from "lodash";
 import $ from "jquery";
 
 class Controller {
@@ -44,16 +42,16 @@ class Controller {
     if (body) {
       console.log("dev", "🌮 Request body:", body, this);
     } else {
-      error("🍽 Empty request body:", body, this);
+      console.error("🍽 Empty request body:", body, this);
     }
     return body;
   }
 
   // private
 
-  private controllerActionValid(action) {
+  protected controllerActionValid(action) {
     if (action === "" || action === undefined || action === null) {
-      return error("🛂 Please pass in an attribute resolver defined on a model, such as user.ts `firstName`.")
+      return console.error("🛂 Please pass in an attribute resolver defined on a model, such as user.ts `firstName`.")
     } else {
       return true;
     }

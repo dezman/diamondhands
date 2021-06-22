@@ -1,8 +1,5 @@
-import React from "react";
-import store from "lib/diamondhands/store";
+import store from "./store";
 import Muan from "./Muon";
-import { helperModel } from "./Model";
-import _ from "lodash";
 
 // Server <-> client state
 const _finishedRequests = [];
