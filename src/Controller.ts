@@ -47,7 +47,7 @@ class Controller {
     return body;
   }
 
-  // private
+  // protected
 
   protected controllerActionValid(action) {
     if (action === "" || action === undefined || action === null) {
@@ -57,6 +57,8 @@ class Controller {
     }
   }
 
+  // private
+  
   private server() {
     const baseUrl = store.get("serverProps.env.server_url");
     console.log("dev", `🎩 Server: ${baseUrl}`);

@@ -1,6 +1,6 @@
-import * as React from "react";
+import React from "react";
 
-class Value extends React.Component<{}> {
+class Value extends React.Component {
   constructor(props){
     super(props);
     this.state ={
