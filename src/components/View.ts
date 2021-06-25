@@ -11,7 +11,7 @@ class Value extends React.Component<{}> {
   
   render(){
     return(
-      <span>{this.props.attr}</span>
+      <span>{ this.props.attr }</span>
     )
   }
 }
