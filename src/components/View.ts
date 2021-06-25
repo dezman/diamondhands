@@ -1,7 +1,7 @@
 import * as React from "react";
 
 class Value extends React.Component<{}> {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       attr: this.props.attr,
