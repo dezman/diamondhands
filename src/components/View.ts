@@ -1,9 +1,9 @@
 import React from "react";
 
 class Value extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state ={
+    this.state = {
       attr: this.props.attr,
       model: this.props.model
     }
@@ -11,7 +11,7 @@ class Value extends React.Component {
   
   render(){
     return(
-      <span>{this.props.attr}</span>
+      <span>{ this.props.attr }</span>
     )
   }
 }
