@@ -1,8 +1,10 @@
-import React from "react";
+import * as React from "react";
 import Proton from "./Proton";
 import store from "./store";
+import View from './components/View'
 
 let value = null;
+
 class Resolver extends Proton {
   value() {
     const Value = this.props.Value;

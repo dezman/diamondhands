@@ -1,9 +1,9 @@
 import React from "react";
-import store from "lib/diamondhands/store";
+import store from "./store";
 
 // Store <-> client state
 class Muon extends React.Component {
-  model; attr; storeKey;
+  model; attr; storeKey; endpoint; reactSetState;
 
   constructor(props) {
     super(props);

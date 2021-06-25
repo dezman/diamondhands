@@ -1,5 +1,3 @@
-import _ from "lodash";
-
 class Store {
   private state;
   private requestTracker = {};
@@ -36,7 +34,7 @@ class Store {
     console.log("debug", "💅 Store#get:", passKey);
     
     if (!passKey || passKey === "") {
-      error("🙈 Invalid store request: ", arguments);
+      console.error("🙈 Invalid store request: ", arguments);
     }
 
     return this.cacheKey(passKey);
@@ -47,7 +45,7 @@ class Store {
     if (this.requestTracker[attr]) return this.requestTracker[attr];
 
     if (!attr || !model) {
-      error("🙈 Invalid store request: ", attr, model);
+      console.error("🙈 Invalid store request: ", attr, model);
     }
 
     model.controller.onFinishedFetching( (res) => {
