@@ -9,7 +9,7 @@ var Store = /** @class */ (function () {
         this.onUpdate = function (f) {
             console.log("all", "🥞 Store#onUpdate:", f);
             _this.onUpdateStack.push(f);
-            return 'ok';
+            return "ok";
         };
         this.handleServerResponse = function (attr, model, res) {
             console.log("dev", "📜 Response:", res);
@@ -71,7 +71,7 @@ var Store = /** @class */ (function () {
         if (this.isGraphql(model, attr)) {
             this.requestTracker[attr] = model.controller.gqlAttribute({
                 client: model.controller.client(),
-                action: attr
+                action: attr,
             });
         }
         else {

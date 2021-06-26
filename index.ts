@@ -1,11 +1,6 @@
-import ApolloController from './src/ApolloController';
-import Atom from './src/Atom';
-import Model from './src/Model';
-import Muon from './src/Muon';
-import Proton from './src/Proton';
-import store from './src/store';
-
-
-const dianmondHand = () => {
-  console.log("=====DiamondHand====");
-}
+export { default as ApolloController } from "./src/ApolloController";
+export { default as Atom } from "./src/Atom";
+export { default as Controller } from "./src/Controller";
+export { default as Model } from "./src/Model";
+export { default as Molecule } from "./src/Molecule";
+export { default as store } from "./src/store";

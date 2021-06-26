@@ -58,7 +58,7 @@ var Controller = /** @class */ (function () {
         this._finishStack.push(f);
         return 'ok';
     };
-    // private
+    // protected
     Controller.prototype.controllerActionValid = function (action) {
         if (action === "" || action === undefined || action === null) {
             return console.error("🛂 Please pass in an attribute resolver defined on a model, such as user.ts `firstName`.");
@@ -67,6 +67,7 @@ var Controller = /** @class */ (function () {
             return true;
         }
     };
+    // private
     Controller.prototype.server = function () {
         var baseUrl = store_1.default.get("serverProps.env.server_url");
         console.log("dev", "\uD83C\uDFA9 Server: " + baseUrl);

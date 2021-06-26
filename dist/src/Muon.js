@@ -44,7 +44,7 @@ var Muon = /** @class */ (function (_super) {
                 }
                 else {
                     if (_this.isFetching())
-                        console.log("dev", "\uD83E\uDDE9", 'Fetching...');
+                        console.log("dev", "\uD83E\uDDE9", "Fetching...");
                 }
             }
             return value || "";
@@ -57,7 +57,7 @@ var Muon = /** @class */ (function (_super) {
         _this.reactSetState = _this.setState;
         _this.setState = function () { return _this.diamondHandsSetState.apply(_this, arguments); };
         _this.state = {
-            value: ""
+            value: "",
         };
         return _this;
     }

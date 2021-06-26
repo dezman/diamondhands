@@ -14,16 +14,16 @@ class Store {
   public set(newState) {
     console.log("debug", "🚮 Old state:", this.state);
     console.log("debug", "💽 New state:", newState);
-    
+
     // Object.assign not recommended for deep merge
-    this.state = _.merge(this.state, newState); 
+    this.state = _.merge(this.state, newState);
 
     window.setTimeout(() => {
       console.log("dev", "🍱 Store state:", this.state);
 
       this.checkWaitFor();
 
-      this.onUpdateStack.forEach( (f) => {
+      this.onUpdateStack.forEach((f) => {
         console.log("all", "🥞 Store onUpdateStack:", f);
         f(this.state);
       });
@@ -32,7 +32,7 @@ class Store {
 
   public get(passKey) {
     console.log("debug", "💅 Store#get:", passKey);
-    
+
     if (!passKey || passKey === "") {
       console.error("🙈 Invalid store request: ", arguments);
     }
@@ -48,16 +48,16 @@ class Store {
       console.error("🙈 Invalid store request: ", attr, model);
     }
 
-    model.controller.onFinishedFetching( (res) => {
+    model.controller.onFinishedFetching((res) => {
       this.handleServerResponse(attr, model, res);
     });
 
     console.log("dev", "🌀 Starting get from server...", model.name, attr);
-    
+
     if (this.isGraphql(model, attr)) {
       this.requestTracker[attr] = model.controller.gqlAttribute({
         client: model.controller.client(),
-        action: attr
+        action: attr,
       });
     } else {
       this.requestTracker[attr] = model.controller.getAttribute(attr);
@@ -69,11 +69,11 @@ class Store {
   public waitFor(passKey, f) {
     const value = this.get(passKey);
 
-    if ( this.valid(value) ) {
+    if (this.valid(value)) {
       return f(value);
     }
 
-    if ( _.includes(this.waitingForKeys[passKey], f) ) {
+    if (_.includes(this.waitingForKeys[passKey], f)) {
       return;
     }
 
@@ -87,20 +87,24 @@ class Store {
   public onUpdate = (f) => {
     console.log("all", "🥞 Store#onUpdate:", f);
     this.onUpdateStack.push(f);
-    return 'ok';
-  }
+    return "ok";
+  };
 
   // private
 
   private checkWaitFor() {
-    console.log("debug", "🧳 Check wait for:", Object.keys(this.waitingForKeys))
+    console.log(
+      "debug",
+      "🧳 Check wait for:",
+      Object.keys(this.waitingForKeys)
+    );
 
-    Object.keys(this.waitingForKeys).forEach( (passKey) => {
+    Object.keys(this.waitingForKeys).forEach((passKey) => {
       const value = this.get(passKey);
       console.log("debug", "🧳 Value:", value);
 
-      if ( this.valid(value) ) {
-        this.waitingForKeys[passKey].forEach( (f) => {
+      if (this.valid(value)) {
+        this.waitingForKeys[passKey].forEach((f) => {
           console.log("debug", "🧳 Wait for callback called:", f);
           f(value);
         });
@@ -116,9 +120,9 @@ class Store {
   }
 
   private cacheKey(passKey) {
-    const cachedValue = _.get(this.state, passKey)
-    
-    if ( this.valid(cachedValue) ) {
+    const cachedValue = _.get(this.state, passKey);
+
+    if (this.valid(cachedValue)) {
       console.log("debug", "💰 Cached value:", cachedValue);
       return cachedValue;
     }
@@ -127,10 +131,10 @@ class Store {
   private handleServerResponse = (attr, model, res) => {
     console.log("dev", "📜 Response:", res);
     let newStateObj = {};
-    
+
     // Save new state to store
-    const relevantData = _(res).get( model.controller.accessor() );
-    
+    const relevantData = _(res).get(model.controller.accessor());
+
     if (relevantData.results) {
       newStateObj[model.name] = newStateObj[model.name] || {};
       newStateObj[model.name][attr] = relevantData.results;
@@ -139,7 +143,7 @@ class Store {
     }
 
     this.set(newStateObj);
-  }
+  };
 
   private valid(x) {
     console.log("debug", "🦆 Store#valid type:", typeof x);
@@ -149,7 +153,7 @@ class Store {
   private debug = () => {
     if (this.state) console.log("dev", "🍱", this.state);
     return this.state;
-  }
+  };
 }
 
 const initialState = {};

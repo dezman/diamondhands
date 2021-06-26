@@ -1,9 +1,13 @@
-import React from "react";
+import * as React from "react";
 import store from "./store";
 
 // Store <-> client state
 class Muon extends React.Component {
-  model; attr; storeKey; endpoint; reactSetState;
+  model;
+  attr;
+  storeKey;
+  endpoint;
+  reactSetState;
 
   constructor(props) {
     super(props);
@@ -14,13 +18,13 @@ class Muon extends React.Component {
     this.endpoint = props.endpoint;
 
     store.onUpdate(this.refresh);
-    
+
     this.reactSetState = this.setState;
     this.setState = () => this.diamondHandsSetState.apply(this, arguments);
 
     this.state = {
-      value: ""
-    }
+      value: "",
+    };
   }
 
   protected quark() {
@@ -28,7 +32,10 @@ class Muon extends React.Component {
     if (this.state.value.length) return this.state.value;
 
     if (!this.storeKey) {
-      console.log("dev", `🗝 You need a store key in your component to get a value.`);
+      console.log(
+        "dev",
+        `🗝 You need a store key in your component to get a value.`
+      );
       console.log("dev", `↳`, this);
     }
 
@@ -44,14 +51,14 @@ class Muon extends React.Component {
   }
 
   protected onChange = (e) => {
-    let newStoreState = {}
+    let newStoreState = {};
     const newKeyValue = e.target.value;
 
     newStoreState[`${this.storeKey}`] = newKeyValue;
     store.set(newStoreState);
 
     this.setState({ value: newKeyValue });
-  }
+  };
 
   protected isFetching() {
     return this.proton && !this.isFinishedReq();
@@ -68,7 +75,7 @@ class Muon extends React.Component {
     if (!this.mounted) return;
     console.log("debug", "🌊 Muon refresh:", this.quark());
     this.forceUpdate();
-  }
+  };
 
   private storeValue = () => {
     const value = store.get(this.storeKey);
@@ -76,14 +83,14 @@ class Muon extends React.Component {
     if (this.attr) {
       console.log("debug", `🧬 Quark attr:`, this.attr);
       if (value) {
-        console.log("debug", `🧩` , `Quark value: ${value}`)
+        console.log("debug", `🧩`, `Quark value: ${value}`);
       } else {
-        if ( this.isFetching() ) console.log("dev", `🧩`, 'Fetching...');
+        if (this.isFetching()) console.log("dev", `🧩`, "Fetching...");
       }
     }
 
     return value || "";
-  }
+  };
 }
 
 export default Muon;

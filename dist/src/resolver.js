@@ -15,7 +15,9 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+// import * as React from "react";
 var Proton_1 = require("./Proton");
+// import View from './components/View'
 var value = null;
 var Resolver = /** @class */ (function (_super) {
     __extends(Resolver, _super);
@@ -24,32 +26,33 @@ var Resolver = /** @class */ (function (_super) {
     }
     Resolver.prototype.value = function () {
         var Value = this.props.Value;
-        return attr = { this: .attr };
-        model = { this: .model } /  >
-        ;
+        // return (
+        //   <Value attr={this.attr} model={this.model} />
+        // )
     };
     Resolver.prototype.edit = function () {
         var Edit = this.props.Edit;
-        return attr = { this: .attr };
-        model = { this: .model } /  >
-        ;
+        // return (
+        //   // <Edit attr={this.attr} model={this.model} />
+        // )
     };
     Resolver.prototype.query = function (variables) {
         return this.model.controller.gqlAttribute({
             client: this.model.controller.client(),
             action: this.props.attr,
-            variables: variables
+            variables: variables,
         });
     };
     return Resolver;
 }(Proton_1.default));
+// const resolver = ({ endpoint, model, attr, Value, Edit }) => {
 var resolver = function (_a) {
-    var endpoint = _a.endpoint, model = _a.model, attr = _a.attr, Value = _a.Value, Edit = _a.Edit;
+    var endpoint = _a.endpoint, model = _a.model, attr = _a.attr;
     return new Resolver({
         model: model,
         attr: attr,
-        Value: Value,
-        Edit: Edit
+        // Value: Value,
+        // Edit: Edit,
     });
 };
 exports.default = resolver;

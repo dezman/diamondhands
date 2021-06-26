@@ -1,11 +1,11 @@
-import React from "react";
+import * as React from "react";
 import Atom from "./Atom";
 
 class Molecule extends Atom {
   constructor(props) {
     super({
       ...props,
-      molecule: true
+      molecule: true,
     });
   }
 }
