@@ -1,3 +1,4 @@
+// @ts-nocheck
 import fetch from "isomorphic-fetch";
 import store from "./store";
 // import $ from "jquery";

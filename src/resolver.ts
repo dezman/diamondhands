@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 // import * as React from "react";
 import Proton from "./Proton";
 import store from "./store";

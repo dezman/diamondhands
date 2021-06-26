@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Validation logic
 
 import resolver from "./resolver";

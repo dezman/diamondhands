@@ -1,3 +1,4 @@
+// @ts-nocheck
 import store from "./store";
 import Muan from "./Muon";
 import * as _ from "lodash";

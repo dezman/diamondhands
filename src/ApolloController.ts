@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import Controller from "./Controller";
 import store from "./store";
