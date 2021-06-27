@@ -1,12 +1,12 @@
 // @ts-nocheck
 import store from "./store";
-import Muan from "./Muon";
-import * as _ from "lodash";
+import Muon from "./Muon";
+import _ from "lodash";
 
 // Server <-> client state
 const _finishedRequests = [];
 
-class Proton extends Muan {
+class Proton extends Muon {
   protected accelerate = () => {
     if (this.attr) {
       store.getFromServer(this.model, this.attr).then(this.finishedReq);

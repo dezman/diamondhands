@@ -1,22 +1,17 @@
 // @ts-nocheck
-import * as React from "react";
+import React from "react";
 import store from "./store";
-import * as _ from "lodash";
+import _ from "lodash";
 
 // Store <-> client state
 class Muon extends React.Component {
-  model;
-  attr;
-  storeKey;
-  endpoint;
-  reactSetState;
-
   constructor(props) {
     super(props);
 
     this.model = props.model;
     this.attr = props.attr;
-    this.storeKey = props.storeKey || this.model.getKey(this.attr);
+    this.storeKey =
+      props.storeKey || (this.model && this.model.getKey(this.attr));
     this.endpoint = props.endpoint;
 
     store.onUpdate(this.refresh);
