@@ -1,48 +1,53 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var store_1 = require("./store");
-var Muon_1 = require("./Muon");
+const store_1 = __importDefault(require("./store"));
+const Muon_1 = __importDefault(require("./Muon"));
+const _ = __importStar(require("lodash"));
 // Server <-> client state
-var _finishedRequests = [];
-var Proton = /** @class */ (function (_super) {
-    __extends(Proton, _super);
-    function Proton() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.accelerate = function () {
-            if (_this.attr) {
-                store_1.default.getFromServer(_this.model, _this.attr).then(_this.finishedReq);
+const _finishedRequests = [];
+class Proton extends Muon_1.default {
+    constructor() {
+        super(...arguments);
+        this.accelerate = () => {
+            if (this.attr) {
+                store_1.default.getFromServer(this.model, this.attr).then(this.finishedReq);
             }
         };
-        _this.onBlur = function () {
+        this.onBlur = () => {
             // TODO: Save
         };
-        _this.finishedReq = function () {
-            _finishedRequests.push(_this);
+        this.finishedReq = () => {
+            _finishedRequests.push(this);
         };
-        return _this;
     }
-    Proton.prototype.isFinishedReq = function () {
+    isFinishedReq() {
         return _.includes(_finishedRequests, this);
-    };
-    Proton.prototype.componentDidMount = function () {
+    }
+    componentDidMount() {
         this.mounted = true;
         this.accelerate();
-    };
-    return Proton;
-}(Muon_1.default));
+    }
+}
 exports.default = Proton;

@@ -1,6 +1,6 @@
 // Validation logic
 
-import resolver from "./resolver"
+import resolver from "./resolver";
 
 class Model {
   constructor(id) {
@@ -22,7 +22,7 @@ class Model {
 
   // private
 
-  private generateResolver = ({ endpoint, attr, Value, Edit }) => {
+  private generateResolver({ endpoint, attr, Value, Edit }) {
     console.log("dev", "👀 Resolver for:", [this.name].concat(arguments));
 
     this[attr] = resolver({
@@ -30,10 +30,9 @@ class Model {
       model: this,
       attr: attr,
       Value: Value,
-      Edit: Edit
+      Edit: Edit,
     });
   }
 }
 
 export default Model;
-

@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 class Store {
   private state;
   private requestTracker = {};

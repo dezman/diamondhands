@@ -4,13 +4,13 @@ declare class Muon extends React.Component {
     attr: any;
     storeKey: any;
     endpoint: any;
-    reactSetState: <K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined) => void;
+    reactSetState: any;
     constructor(props: any);
     protected quark(): any;
     protected componentDidMount(): void;
     protected componentWillUnmount(): void;
     protected onChange: (e: any) => void;
-    protected isFetching(): any;
+    protected isFetching(): boolean;
     private diamondHandsSetState;
     private refresh;
     private storeValue;

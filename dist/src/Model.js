@@ -1,34 +1,34 @@
 "use strict";
 // Validation logic
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var resolver_1 = require("./resolver");
-var Model = /** @class */ (function () {
-    function Model(id) {
-        var _this = this;
-        // private
-        this.generateResolver = function (_a) {
-            var endpoint = _a.endpoint, attr = _a.attr, Value = _a.Value, Edit = _a.Edit;
-            console.log("dev", "👀 Resolver for:", [_this.name].concat(arguments));
-            _this[attr] = resolver_1.default({
-                endpoint: endpoint,
-                model: _this,
-                attr: attr,
-                Value: Value,
-                Edit: Edit
-            });
-        };
+const resolver_1 = __importDefault(require("./resolver"));
+class Model {
+    constructor(id) {
         this.id = id;
         this.data = {};
         this.name = this.name();
         this.resolvers().forEach(this.generateResolver);
     }
-    Model.prototype.hydrate = function (obj) {
+    hydrate(obj) {
         this.data = obj;
         return this;
-    };
-    Model.prototype.getKey = function (attr) {
-        return this.name + "." + attr;
-    };
-    return Model;
-}());
+    }
+    getKey(attr) {
+        return `${this.name}.${attr}`;
+    }
+    // private
+    generateResolver({ endpoint, attr, Value, Edit }) {
+        console.log("dev", "👀 Resolver for:", [this.name].concat(arguments));
+        this[attr] = resolver_1.default({
+            endpoint: endpoint,
+            model: this,
+            attr: attr,
+            Value: Value,
+            Edit: Edit,
+        });
+    }
+}
 exports.default = Model;

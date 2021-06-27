@@ -1,8 +1,8 @@
 declare class Controller {
-    _finishStack: never[];
+    _finishStack: any[];
     getAttribute(action: any): void;
-    basicFetch(path: any, body: any): any;
-    controllerFetch(method: any, path: any, body: any): any;
+    basicFetch(path: any, body: any): Promise<string>;
+    controllerFetch(method: any, path: any, body: any): Promise<any>;
     onFinishedFetching(f: any): string;
     protected requestBody: (action: any) => any;
     protected controllerActionValid(action: any): true | void;

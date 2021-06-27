@@ -1,91 +1,95 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = require("react");
-var store_1 = require("./store");
+const React = __importStar(require("react"));
+const store_1 = __importDefault(require("./store"));
 // Store <-> client state
-var Muon = /** @class */ (function (_super) {
-    __extends(Muon, _super);
-    function Muon(props) {
-        var _this = _super.call(this, props) || this;
-        _this.onChange = function (e) {
-            var newStoreState = {};
-            var newKeyValue = e.target.value;
-            newStoreState["" + _this.storeKey] = newKeyValue;
+class Muon extends React.Component {
+    constructor(props) {
+        super(props);
+        this.onChange = (e) => {
+            let newStoreState = {};
+            const newKeyValue = e.target.value;
+            newStoreState[`${this.storeKey}`] = newKeyValue;
             store_1.default.set(newStoreState);
-            _this.setState({ value: newKeyValue });
+            this.setState({ value: newKeyValue });
         };
-        _this.refresh = function () {
-            if (!_this.mounted)
+        this.refresh = () => {
+            if (!this.mounted)
                 return;
-            console.log("debug", "🌊 Muon refresh:", _this.quark());
-            _this.forceUpdate();
+            console.log("debug", "🌊 Muon refresh:", this.quark());
+            this.forceUpdate();
         };
-        _this.storeValue = function () {
-            var value = store_1.default.get(_this.storeKey);
-            if (_this.attr) {
-                console.log("debug", "\uD83E\uDDEC Quark attr:", _this.attr);
+        this.storeValue = () => {
+            const value = store_1.default.get(this.storeKey);
+            if (this.attr) {
+                console.log("debug", `🧬 Quark attr:`, this.attr);
                 if (value) {
-                    console.log("debug", "\uD83E\uDDE9", "Quark value: " + value);
+                    console.log("debug", `🧩`, `Quark value: ${value}`);
                 }
                 else {
-                    if (_this.isFetching())
-                        console.log("dev", "\uD83E\uDDE9", "Fetching...");
+                    if (this.isFetching())
+                        console.log("dev", `🧩`, "Fetching...");
                 }
             }
             return value || "";
         };
-        _this.model = props.model;
-        _this.attr = props.attr;
-        _this.storeKey = props.storeKey || _this.model.getKey(_this.attr);
-        _this.endpoint = props.endpoint;
-        store_1.default.onUpdate(_this.refresh);
-        _this.reactSetState = _this.setState;
-        _this.setState = function () { return _this.diamondHandsSetState.apply(_this, arguments); };
-        _this.state = {
+        this.model = props.model;
+        this.attr = props.attr;
+        this.storeKey = props.storeKey || this.model.getKey(this.attr);
+        this.endpoint = props.endpoint;
+        store_1.default.onUpdate(this.refresh);
+        this.reactSetState = this.setState;
+        this.setState = () => this.diamondHandsSetState.apply(this, arguments);
+        this.state = {
             value: "",
         };
-        return _this;
     }
-    Muon.prototype.quark = function () {
+    quark() {
         // return if quark is already set
         if (this.state.value.length)
             return this.state.value;
         if (!this.storeKey) {
-            console.log("dev", "\uD83D\uDDDD You need a store key in your component to get a value.");
-            console.log("dev", "\u21B3", this);
+            console.log("dev", `🗝 You need a store key in your component to get a value.`);
+            console.log("dev", `↳`, this);
         }
         return this.storeValue();
-    };
-    Muon.prototype.componentDidMount = function () {
+    }
+    componentDidMount() {
         this.mounted = true;
-    };
-    Muon.prototype.componentWillUnmount = function () {
+    }
+    componentWillUnmount() {
         this.mounted = false;
-    };
-    Muon.prototype.isFetching = function () {
+    }
+    isFetching() {
         return this.proton && !this.isFinishedReq();
-    };
+    }
     // private
-    Muon.prototype.diamondHandsSetState = function (state) {
+    diamondHandsSetState(state) {
         if (!this.mounted)
             return;
         this.reactSetState(state);
-    };
-    return Muon;
-}(React.Component));
+    }
+}
 exports.default = Muon;
