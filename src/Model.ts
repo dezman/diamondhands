@@ -17,7 +17,7 @@ class Model {
     return this;
   }
 
-  protected getKey(attr) {
+  private getKey(attr) {
     return `${this.name}.${attr}`;
   }
 
