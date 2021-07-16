@@ -11,7 +11,7 @@ class Store {
     this.state = initialState;
 
     console.log("debug", "🗺 Store ctx:", this);
-    window.bug = this.debug;
+    console.debug = this.debug;
   }
 
   public set(newState) {
@@ -21,7 +21,7 @@ class Store {
     // Object.assign not recommended for deep merge
     this.state = _.merge(this.state, newState);
 
-    window.setTimeout(() => {
+    console.setTimeout(() => {
       console.log("dev", "🍱 Store state:", this.state);
 
       this.checkWaitFor();

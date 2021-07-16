@@ -8,7 +8,7 @@ class Model {
     this.id = id;
     this.data = {};
     this.name = this.name();
-
+    
     this.resolvers().forEach(this.generateResolver);
   }
 
@@ -22,9 +22,9 @@ class Model {
   }
 
   // private
-
+  
   private generateResolver({ endpoint, attr, Value, Edit }) {
-    console.log("dev", "👀 Resolver for:", [this.name].concat(arguments));
+    console.log(`dev", "👀 Resolver for:`);
 
     this[attr] = resolver({
       endpoint: endpoint,

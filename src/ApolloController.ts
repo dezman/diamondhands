@@ -9,12 +9,6 @@ const setDiamondhandsClients = (obj: { client: string }) => {
   diamondhandsClients = obj;
 };
 
-interface GqlAttr {
-  client: String;
-  action: String;
-  variables: any; //chane to type
-}
-
 class ApolloController extends Controller {
   constructor() {
     super();

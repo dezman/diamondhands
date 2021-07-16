@@ -6,3 +6,7 @@
 ### Version 0.1.3
 
 - Added the JS compilation
+
+### Version 0.1.5
+
+- Added the NPM Registry
