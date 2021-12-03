@@ -10,3 +10,8 @@
 ### Version 0.1.5
 
 - Added the NPM Registry
+
+### Version 0.1.7
+
+- Ready for primetime (I think)
+- Works as expected when imported.
