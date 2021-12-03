@@ -34,7 +34,6 @@
     "fetch-mock": "^9.11.0",
     "isomorphic-fetch": "^3.0.0",
     "jasmine-ts": "^0.4.0",
-    "jquery": "^3.6.0",
     "lodash": "^4.17.21",
     "ts-node": "^10.1.0",
     "tsc-watch": "^4.4.0",

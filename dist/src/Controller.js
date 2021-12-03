@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-nocheck
 const isomorphic_fetch_1 = __importDefault(require("isomorphic-fetch"));
 const store_1 = __importDefault(require("./store"));
-// import $ from "jquery";
 class Controller {
     constructor() {
         this._finishStack = [];
