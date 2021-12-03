@@ -38,13 +38,13 @@
     "lodash": "^4.17.21",
     "ts-node": "^10.1.0",
     "tsc-watch": "^4.4.0",
-    "typescript-transpile-only": "^0.0.4"
+    "typescript-transpile-only": "^0.0.4",
+    "typescript": "^4.3.4",
+    "react": "^17.0.2"
   },
   "devDependencies": {
     "@types/jasmine-ajax": "^3.3.3",
     "jasmine": "^3.8.0",
-    "jasmine-ajax": "^4.0.0",
-    "react": "^17.0.2",
-    "typescript": "^4.3.4"
+    "jasmine-ajax": "^4.0.0"
   }
 }

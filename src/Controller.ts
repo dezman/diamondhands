@@ -10,7 +10,7 @@ class Controller {
     if (!this.controllerActionValid(action)) return;
     console.log("debug", "🎛 Controller#getAttribute", `🪡 ${action}`);
 
-    //return this.controllerFetch( ...this.requestBody(action) );
+    return this.controllerFetch( ...this.requestBody(action) );
   }
 
   // Plain text fetch
@@ -32,7 +32,7 @@ class Controller {
     return "ok";
   }
 
-  
+
   // protected
 
   protected requestBody = (action) => {
