@@ -21,7 +21,7 @@ class Store {
     // Object.assign not recommended for deep merge
     this.state = _.merge(this.state, newState);
 
-    console.setTimeout(() => {
+    setTimeout(() => {
       console.log("dev", "🍱 Store state:", this.state);
 
       this.checkWaitFor();
@@ -123,6 +123,9 @@ class Store {
   }
 
   private cacheKey(passKey) {
+    console.log("passKey", "🗝 state:", this.state);
+    console.log("passKey", "🗝 Pass Key:", passKey);
+
     const cachedValue = _.get(this.state, passKey);
 
     if (this.valid(cachedValue)) {

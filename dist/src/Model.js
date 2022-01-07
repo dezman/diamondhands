@@ -6,15 +6,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const resolver_1 = __importDefault(require("./resolver"));
+const store_1 = __importDefault(require("../dist/src/store"));
 class Model {
     constructor(id) {
         this.id = id;
-        this.data = {};
         this.name = this.name();
-        this.resolvers().forEach(this.generateResolver);
+        this.resolvers().forEach(this.generateResolver.bind(this));
     }
     hydrate(obj) {
-        this.data = obj;
+        const newState = {};
+        newState[this.name] = obj;
+        store_1.default.set(newState);
         return this;
     }
     getKey(attr) {

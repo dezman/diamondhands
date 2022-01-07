@@ -26,14 +26,10 @@
   "homepage": "https://github.com/HeyRobotShop/diamondhands#readme",
   "dependencies": {
     "@apollo/client": "^3.3.20",
-    "@types/graphql": "^14.5.0",
     "@types/isomorphic-fetch": "^0.0.35",
-    "@types/jasmine": "^3.8.1",
     "@types/lodash": "^4.14.170",
     "@types/react": "^17.0.11",
-    "fetch-mock": "^9.11.0",
     "isomorphic-fetch": "^3.0.0",
-    "jasmine-ts": "^0.4.0",
     "lodash": "^4.17.21",
     "ts-node": "^10.1.0",
     "tsc-watch": "^4.4.0",
@@ -42,7 +38,10 @@
     "react": "^17.0.2"
   },
   "devDependencies": {
+    "jasmine-ts": "^0.4.0",
+    "fetch-mock": "^9.11.0",
     "@types/jasmine-ajax": "^3.3.3",
+    "@types/jasmine": "^3.8.1",
     "jasmine": "^3.8.0",
     "jasmine-ajax": "^4.0.0"
   }

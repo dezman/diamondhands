@@ -43,7 +43,7 @@ class Store {
         console.log("debug", "💽 New state:", newState);
         // Object.assign not recommended for deep merge
         this.state = lodash_1.default.merge(this.state, newState);
-        console.setTimeout(() => {
+        setTimeout(() => {
             console.log("dev", "🍱 Store state:", this.state);
             this.checkWaitFor();
             this.onUpdateStack.forEach((f) => {
@@ -116,6 +116,8 @@ class Store {
         return model.controller.requestBody(attr).kind === "Document";
     }
     cacheKey(passKey) {
+        console.log("passKey", "🗝 state:", this.state);
+        console.log("passKey", "🗝 Pass Key:", passKey);
         const cachedValue = lodash_1.default.get(this.state, passKey);
         if (this.valid(cachedValue)) {
             console.log("debug", "💰 Cached value:", cachedValue);
